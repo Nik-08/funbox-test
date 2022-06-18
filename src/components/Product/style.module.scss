@@ -1,0 +1,208 @@
+$mainColor: #1698d9;
+$greyColor: #666666;
+$blackColor: #000;
+$borderColor: #2ea8e6;
+$disableColor: #b3b3b3;
+$disableWeight: #979797;
+$activeColor: #e52e7a;
+$activeTitle: #e62e7a;
+
+.product__card {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 320px;
+  min-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 991px) {
+    &:first-of-type {
+      grid-row: span 2;
+      -ms-grid-column-span: 2;
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 650px) {
+    &:first-of-type {
+      grid-row: span 1;
+      -ms-grid-column-span: 1;
+      grid-column: span 1;
+      transform: translateX(0%);
+    }
+
+    min-width: auto;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: calc(100% + 8px);
+    height: calc(100% - 22px);
+    border-radius: 12px;
+    z-index: -1;
+    background: linear-gradient(
+      135deg,
+      transparent,
+      transparent 30px,
+      $borderColor 20px,
+      $borderColor 20px
+    );
+  }
+
+  &.product__card_disabled::after {
+    background: linear-gradient(
+      135deg,
+      transparent,
+      transparent 30px,
+      $disableColor 20px,
+      $disableColor 20px
+    );
+  }
+  &.product__card_active::after {
+    background: linear-gradient(
+      135deg,
+      transparent,
+      transparent 30px,
+      $activeColor 20px,
+      $activeColor 20px
+    );
+  }
+}
+
+._color {
+  color: $mainColor;
+}
+
+.card__body {
+  border-radius: 12px;
+  position: relative;
+  margin-bottom: 14px;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    transparent 30px,
+    #f2f2f2 20px,
+    #f2f2f2 20px
+  );
+  padding-top: 16px;
+  height: calc(100% - 30px);
+  min-height: 480px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.card__body_disabled {
+    opacity: 0.5;
+    cursor: default;
+
+    .card__title_small,
+    .card__name,
+    .card__favorit,
+    .card__description {
+      color: $disableColor;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.card__header {
+  padding-left: 48px;
+  width: 100%;
+}
+
+.card__title_small {
+  font-size: 16px;
+  line-height: 18px;
+  color: $greyColor;
+  font-weight: 400;
+  margin-bottom: 5px;
+
+  &.card__title_active {
+    color: $activeTitle;
+  }
+}
+
+.card__name {
+  font-size: 48px;
+  line-height: 55px;
+  color: $blackColor;
+}
+
+.card__favorit {
+  color: $blackColor;
+  font-size: 24px;
+  line-height: 27px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.card__description {
+  color: $greyColor;
+  max-width: 127px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.card__description span {
+  display: block;
+}
+
+.card__footer {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+
+  &.card__footer_disabled {
+    color: #ffff66;
+  }
+}
+
+.card__link {
+  display: inline-block;
+  border-bottom: 1px dashed $mainColor;
+  cursor: pointer;
+}
+
+.card__weight {
+  min-width: 80px;
+  width: 100%;
+  max-width: 80px;
+  height: 80px;
+  background: $borderColor;
+  border-radius: 50%;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+  line-height: 22px;
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+
+  .card__weight_kilo {
+    font-size: 21px;
+    margin-top: 5px;
+    display: block;
+  }
+
+  &.card__weight_disabled {
+    background: $disableWeight;
+  }
+  &.card__weight_active {
+    background: $activeColor;
+  }
+}

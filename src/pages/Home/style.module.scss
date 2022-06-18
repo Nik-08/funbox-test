@@ -1,0 +1,26 @@
+.products {
+  width: 100%;
+}
+
+.products__title {
+  font-size: 36px;
+  line-height: 44px;
+  color: #fff;
+  font-family: "Exo2";
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.product__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+
+  @media (max-width: 991px) {
+    grid-template-columns: auto;
+  }
+
+  @media (max-width: 650px) {
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}
