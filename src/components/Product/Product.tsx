@@ -66,7 +66,11 @@ export const Product: FC<Props> = ({
       ref.current.addEventListener("mouseenter", setMouseEnter);
     }
 
-    return () => {};
+    return () => {
+      if (null !== ref.current) {
+        ref.current.removeEventListener("mouseenter", setMouseEnter);
+      }
+    };
   }, [leave]);
 
   return (
